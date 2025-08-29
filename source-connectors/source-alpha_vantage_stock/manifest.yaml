@@ -1,0 +1,2615 @@
+version: 6.48.15
+
+type: DeclarativeSource
+
+check:
+  type: CheckStream
+  stream_names:
+    - TIME_SERIES_DAILYz
+
+definitions:
+  streams:
+    TIME_SERIES_DAILYz:
+      type: DeclarativeStream
+      name: TIME_SERIES_DAILYz
+      retriever:
+        type: SimpleRetriever
+        requester:
+          $ref: "#/definitions/base_requester"
+          path: >-
+            /query?function=TIME_SERIES_INTRADAY&symbol={{
+            config['stock_symbol'] }}&interval=5min&apikey={{ config['api_key']
+            }}
+          http_method: GET
+        record_selector:
+          type: RecordSelector
+          extractor:
+            type: DpathExtractor
+            field_path: []
+        decoder:
+          type: JsonDecoder
+      schema_loader:
+        type: InlineSchemaLoader
+        schema:
+          $ref: "#/schemas/TIME_SERIES_DAILYz"
+  base_requester:
+    type: HttpRequester
+    url_base: https://www.alphavantage.co
+
+streams:
+  - $ref: "#/definitions/streams/TIME_SERIES_DAILYz"
+
+spec:
+  type: Spec
+  connection_specification:
+    type: object
+    $schema: http://json-schema.org/draft-07/schema#
+    required:
+      - stock_symbol
+      - api_key
+    properties:
+      stock_symbol:
+        type: string
+        title: STOCK_SYMBOL
+        default: IBM
+        order: 0
+      api_key:
+        type: string
+        title: API_KEY
+        airbyte_secret: true
+        order: 1
+    additionalProperties: true
+
+metadata:
+  autoImportSchema:
+    TIME_SERIES_DAILYz: true
+  testedStreams:
+    TIME_SERIES_DAILYz:
+      streamHash: bca3ea1761e333095c26c9ed00372a7fb7d3969a
+      hasResponse: true
+      responsesAreSuccessful: true
+      hasRecords: true
+      primaryKeysArePresent: true
+      primaryKeysAreUnique: true
+  assist: {}
+
+schemas:
+  TIME_SERIES_DAILYz:
+    type: object
+    $schema: http://json-schema.org/schema#
+    additionalProperties: true
+    properties:
+      Meta Data:
+        type:
+          - object
+          - "null"
+        properties:
+          1. Information:
+            type:
+              - string
+              - "null"
+          2. Symbol:
+            type:
+              - string
+              - "null"
+          3. Last Refreshed:
+            type:
+              - string
+              - "null"
+          4. Interval:
+            type:
+              - string
+              - "null"
+          5. Output Size:
+            type:
+              - string
+              - "null"
+          6. Time Zone:
+            type:
+              - string
+              - "null"
+      Time Series (5min):
+        type:
+          - object
+          - "null"
+        properties:
+          "2025-08-28 11:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 11:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 11:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 11:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 11:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 11:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 12:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 13:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 14:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 15:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 16:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 17:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:05:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 18:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:00:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:10:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:15:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:20:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:25:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:30:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:35:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:40:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:45:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:50:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
+          "2025-08-28 19:55:00":
+            type:
+              - object
+              - "null"
+            properties:
+              1. open:
+                type:
+                  - string
+                  - "null"
+              2. high:
+                type:
+                  - string
+                  - "null"
+              3. low:
+                type:
+                  - string
+                  - "null"
+              4. close:
+                type:
+                  - string
+                  - "null"
+              5. volume:
+                type:
+                  - string
+                  - "null"
