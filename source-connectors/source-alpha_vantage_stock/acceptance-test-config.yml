@@ -1,0 +1,13 @@
+# acceptance-test-config.yml
+connector_image: airbyte/source-declarative:dev
+tests:
+  spec:
+    - config_path: "integration_tests/secrets/config.json"
+  connection:
+    - config_path: "integration_tests/secrets/config.json"
+  discovery:
+    - config_path: "integration_tests/secrets/config.json"
+  basic_read:
+    - config_path: "integration_tests/secrets/config.json"
+  full_refresh:
+    - config_path: "integration_tests/secrets/config.json"
